@@ -1,3 +1,4 @@
+use std::cmp;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{prelude::*, Error};
@@ -111,4 +112,51 @@ pub fn get_sum_possible_game_id (possible_game_hasmap:HashMap<String, Vec<HashMa
         total_sum = total_sum + id;
     });
     total_sum
+}
+fn get_max_color(subset: &HashMap<String, u32>, max_color: &HashMap<&str, u32>, color: &str) -> u32 {
+    match subset.get(color) {
+        Some(r) => {
+            let color_max = max_color.get(color).unwrap();
+            let answer = cmp::max(color_max, r);
+            *answer
+        },
+        None => *max_color.get(color).unwrap()
+    }
+}
+
+pub fn get_minimum_set_of_cubes (clean_hashmap: HashMap<String, Vec<HashMap<String, u32>>> )-> Vec<HashMap<&'static str, u32>>{
+    let mut array_minimum_subset: Vec<HashMap<&str, u32>> = Vec::new();
+    clean_hashmap.keys().for_each(|k| {
+        let game = clean_hashmap.get(k).unwrap();
+        let mut max_color: HashMap<&str, u32>= HashMap::from([
+            ("red", 0),
+            ("green", 0),
+            ("blue", 0),
+        ]);
+        game.into_iter().for_each(|subset| {
+            let red:u32 = get_max_color(subset, &max_color, "red");
+            let green:u32 = get_max_color(subset, &max_color, "green");
+            let blue:u32 = get_max_color(subset, &max_color, "blue");
+            
+            max_color.insert("red", red);
+            max_color.insert("green", green);
+            max_color.insert("blue", blue);
+        });
+        array_minimum_subset.push(max_color.to_owned())
+    });
+    array_minimum_subset
+}
+
+pub fn sum_power_of_minimum_set_of_cubes (array_minimum_subset:Vec<HashMap<&str, u32>> ) -> u32{
+    let power: Vec<u32> = array_minimum_subset.iter().map(|e| {
+        let red =  e.get("red").unwrap();
+        let green =  e.get("green").unwrap();
+        let blue =  e.get("blue").unwrap();
+
+        let power_mul = red * green * blue;
+        power_mul
+    }).collect();
+    let answer: u32 = power.iter().sum();
+    
+    answer
 }
