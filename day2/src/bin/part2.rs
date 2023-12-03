@@ -7,8 +7,6 @@ fn main () {
     
     let minimum_set =  get_minimum_set_of_cubes(input_data_strucuture);
     
-    let length = minimum_set.len() ;
-
     let result = sum_power_of_minimum_set_of_cubes(minimum_set);
     println!("{}", result);
     
