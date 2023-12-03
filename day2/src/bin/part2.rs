@@ -9,6 +9,4 @@ fn main () {
     
     let result = sum_power_of_minimum_set_of_cubes(minimum_set);
     println!("{}", result);
-    
-    
 }
