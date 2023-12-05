@@ -1,7 +1,7 @@
 use lib::{get_input, input_to_data_structure, TotalCubes, get_possible_games, get_sum_possible_game_id};
 
 fn main () {
-   let input = get_input("./src/inputs/part1.txt").unwrap(); 
+   let input = get_input("./src/inputs/input.txt").unwrap(); 
 
    let input_data_strucuture = input_to_data_structure(input);
 

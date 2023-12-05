@@ -2,7 +2,7 @@ use std::{collections::HashMap, fmt::Error};
 
 use lib::input_array;
 fn main () {
-    let path = "./src/inputs/part2.txt";
+    let path = "./src/inputs/input.txt";
     let arr = input_array(path).unwrap();
     let words_to_number_map = [
         ("one", 1), 

@@ -16,7 +16,7 @@ fn get_first_last_digits(input: Vec<String>) -> Result<u32, Error> {
 }
 
 fn main() {
-    let input: Vec<String> = input_array("./src/input.txt").expect("");
+    let input: Vec<String> = input_array("./src/inputs/input.txt").expect("");
     let digits: u32 = get_first_last_digits(input).expect("");
     println!("{:?}", digits);
 }
