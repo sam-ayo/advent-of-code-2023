@@ -18,6 +18,7 @@ struct Games {
 
 pub fn input_to_data_structure (input: String)  {
     let mut total_sum = 0;
+    let mut each_card = vec![];
     for line in input.lines(){
         let card_vec: Vec<&str> = line.split(":").collect();
         let card_no = card_vec[0];
@@ -30,6 +31,9 @@ pub fn input_to_data_structure (input: String)  {
 
         let winning_numbers: Vec<u32> = winning_numbers_str.split(" ").filter(|e| *e !=  ""  ).map(|e| e.parse().unwrap()).collect();
         let your_numbers: Vec<u32> = your_numbers_str.split(" ").filter(|e| *e !=  ""  ).map(|e| e.parse().unwrap()).collect();
+        
+        each_card.push(winning_numbers.clone());
+        each_card.push(your_numbers.clone());
         
         
         let mut count = 0;
@@ -57,8 +61,8 @@ pub fn input_to_data_structure (input: String)  {
         
         total_sum += product;
     }
-    println!("{total_sum}");
 
+    println!("{:?}", each_card);
 }
 
 

@@ -14,3 +14,7 @@ path="src/lib.rs"
 [[bin]]
 name="part1"
 path="src/bin/part1.rs"
+
+[[bin]]
+name="part2"
+path="src/bin/part2.rs"

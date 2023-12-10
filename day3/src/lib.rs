@@ -14,9 +14,6 @@ pub fn input_to_data_structure(input: String) -> Vec<Vec<char>>{
         return line_chars
     }).collect();
     
-    input_vec.iter().for_each(|l| {
-        println!("{:?}", l); println!()});
-
     input_vec
 }
 
